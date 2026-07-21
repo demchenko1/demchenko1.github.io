@@ -3,9 +3,6 @@
    styles.css
 ================================================ */
 
-/* ================================================
-   1. CSS CUSTOM PROPERTIES
-================================================ */
 :root {
   --bg:             #F5F5F7;
   --surface:        #FFFFFF;
@@ -40,9 +37,6 @@
   --duration-slow: 400ms;
 }
 
-/* ================================================
-   2. RESET & BASE
-================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -91,9 +85,6 @@ button { border: none; background: none; padding: 0; }
   border: 0;
 }
 
-/* ================================================
-   3. TYPOGRAPHY
-================================================ */
 h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
 
 .name {
@@ -123,9 +114,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
   margin-bottom: var(--space-sm);
 }
 
-/* ================================================
-   4. LAYOUT & PAGE
-================================================ */
 .page {
   max-width: 420px;
   margin: 0 auto;
@@ -138,9 +126,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
   animation: pageEnter 0.55s var(--ease) 0.1s forwards;
 }
 
-/* ================================================
-   5. HERO
-================================================ */
 .hero {
   display: flex;
   flex-direction: column;
@@ -149,9 +134,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
   padding: var(--space-lg) 0 var(--space-sm);
 }
 
-/* ================================================
-   6. CARDS — SHARED
-================================================ */
 .card {
   background: var(--surface);
   border-radius: var(--radius-xl);
@@ -169,9 +151,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
   }
 }
 
-/* ================================================
-   7. CONNECT SECTION
-================================================ */
 .connect-grid {
   display: flex;
   flex-direction: column;
@@ -246,9 +225,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
 }
 .connect-arrow svg { width: 100%; height: 100%; }
 
-/* ================================================
-   8. ADD CONTACT BUTTON
-================================================ */
 .add-contact-btn {
   display: flex;
   align-items: center;
@@ -290,9 +266,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
 .add-contact-icon { width: 22px; height: 22px; flex-shrink: 0; }
 .add-contact-icon svg { width: 100%; height: 100%; }
 
-/* ================================================
-   9. CRYPTO — EXPANDABLE
-================================================ */
 .crypto-section {
   background: var(--surface);
   border-radius: var(--radius-xl);
@@ -409,9 +382,6 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
 .copy-btn.copied .copy-btn-default { opacity: 0; transform: scale(0.6); }
 .copy-btn.copied .copy-btn-success { opacity: 1; transform: scale(1); }
 
-/* ================================================
-   10. TOAST
-================================================ */
 .toast {
   position: fixed;
   bottom: max(var(--space-xl), env(safe-area-inset-bottom) + 16px);
@@ -438,4 +408,60 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
 .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast-icon { color: #34C759; font-size: 15px; }
 
-/* ============================
+@keyframes pageEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero                { animation: childEnter 0.5s var(--ease) 0.15s both; }
+.connect-card        { animation: childEnter 0.5s var(--ease) 0.25s both; }
+.add-contact-section { animation: childEnter 0.5s var(--ease) 0.32s both; }
+.crypto-section      { animation: childEnter 0.5s var(--ease) 0.38s both; }
+
+@keyframes childEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             #111110;
+    --surface:        #1C1C1E;
+    --surface-2:      #2C2C2E;
+    --text-primary:   #F5F5F7;
+    --text-secondary: #98989D;
+    --text-tertiary:  #636366;
+    --border:         rgba(255,255,255,0.08);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:      0 4px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-lg:      0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.3);
+    --telegram-color: #3DB8F5;
+    --whatsapp-color: #34E070;
+    --instagram-color:#F0547A;
+    --linkedin-color: #3D8BD4;
+  }
+
+  .add-contact-btn {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .page, .hero, .connect-card,
+  .add-contact-section, .crypto-section {
+    animation: none; opacity: 1; transform: none;
+  }
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }

@@ -1,26 +1,16 @@
-<div style="padding:1.5rem;font-family:var(--font-mono);font-size:13px;line-height:1.6;background:var(--surface-1);border-radius:12px;border:0.5px solid var(--border)">
-<p style="margin:0 0 1rem;font-family:var(--font-sans);font-size:15px;font-weight:500;color:var(--text-primary)">script.js</p>
-<button onclick="
-const c=`/**
+/**
  * ALEXANDER DEMCHENKO — DIGITAL CONTACT CARD
  * script.js
- *
- * 1. vCard generation and download
- * 2. Crypto panel toggle
- * 3. Clipboard copy
- * 4. Toast notification
- * 5. Init
  */
 
 /* ================================================
-   1. VCARD — VCard 3.0, iPhone-compatible
-   Fields: name, mobile phone, social URLs only.
-   No email, no address, no country.
-   TEL;TYPE=CELL,VOICE triggers iMessage + FaceTime on iOS.
+   1. VCARD
+   VCard 3.0, совместим с iPhone.
+   TEL;TYPE=CELL,VOICE — iOS видит как мобильный,
+   предлагает iMessage и FaceTime автоматически.
 ================================================ */
-
 function buildVCard() {
-  const CRLF = '\\r\\n';
+  const CRLF = '\r\n';
   const lines = [
     'BEGIN:VCARD',
     'VERSION:3.0',
@@ -50,15 +40,14 @@ function downloadVCard() {
   showToast('Contact saved!');
 }
 
-
 /* ================================================
    2. CRYPTO PANEL TOGGLE
 ================================================ */
-
 function initCryptoToggle() {
   const toggle = document.getElementById('cryptoToggle');
   const panel  = document.getElementById('cryptoPanel');
   if (!toggle || !panel) return;
+
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!isExpanded));
@@ -66,12 +55,10 @@ function initCryptoToggle() {
   });
 }
 
-
 /* ================================================
    3. CLIPBOARD COPY
-   Works on modern Clipboard API + legacy iOS Safari fallback.
+   Современный API + fallback для старого iOS Safari.
 ================================================ */
-
 async function copyToClipboard(text) {
   if (navigator.clipboard && window.isSecureContext) {
     try { await navigator.clipboard.writeText(text); return true; } catch {}
@@ -112,11 +99,9 @@ function initCopyButtons() {
   });
 }
 
-
 /* ================================================
-   4. TOAST NOTIFICATION
+   4. TOAST
 ================================================ */
-
 let toastTimeout = null;
 
 function showToast(message = 'Done', duration = 2400) {
@@ -132,11 +117,9 @@ function showToast(message = 'Done', duration = 2400) {
   }, duration);
 }
 
-
 /* ================================================
    5. INIT
 ================================================ */
-
 function init() {
   const addContactBtn = document.getElementById('addContactBtn');
   if (addContactBtn) addContactBtn.addEventListener('click', downloadVCard);
@@ -149,13 +132,3 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
-`;
-const b=new Blob([c],{type:'text/javascript'});
-const u=URL.createObjectURL(b);
-const a=document.createElement('a');
-a.href=u;a.download='script.js';
-document.body.appendChild(a);a.click();
-document.body.removeChild(a);
-setTimeout(()=>URL.revokeObjectURL(u),1000);
-" style="padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;border-radius:8px;border:0.5px solid var(--border-strong);background:var(--surface-2);color:var(--text-primary)">⬇ Скачать script.js</button>
-</div>

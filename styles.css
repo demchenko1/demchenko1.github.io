@@ -1,7 +1,12 @@
-<div style="padding:1.5rem;font-family:var(--font-mono);font-size:13px;line-height:1.6;background:var(--surface-1);border-radius:12px;border:0.5px solid var(--border)">
-<p style="margin:0 0 1rem;font-family:var(--font-sans);font-size:15px;font-weight:500;color:var(--text-primary)">styles.css</p>
-<button onclick="
-const c=`:root {
+/* ================================================
+   ALEXANDER DEMCHENKO — DIGITAL CONTACT CARD
+   styles.css
+================================================ */
+
+/* ================================================
+   1. CSS CUSTOM PROPERTIES
+================================================ */
+:root {
   --bg:             #F5F5F7;
   --surface:        #FFFFFF;
   --surface-2:      #F2F2F5;
@@ -18,19 +23,33 @@ const c=`:root {
   --instagram-color:#E1306C;
   --linkedin-color: #0A66C2;
   --font: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
-  --space-xs:  4px; --space-sm: 8px; --space-md: 16px;
-  --space-lg:  24px; --space-xl: 32px; --space-2xl: 48px;
-  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 20px;
-  --radius-xl: 28px; --radius-full: 9999px;
-  --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration:    220ms;
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-full: 9999px;
+  --ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration:      220ms;
   --duration-slow: 400ms;
 }
+
+/* ================================================
+   2. RESET & BASE
+================================================ */
 *, *::before, *::after {
-  box-sizing: border-box; margin: 0; padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
+
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -38,244 +57,385 @@ html {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
+
 body {
   font-family: var(--font);
   background-color: var(--bg);
   color: var(--text-primary);
   min-height: 100vh;
   min-height: 100dvh;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-  transition: background-color var(--duration-slow) var(--ease), color var(--duration-slow) var(--ease);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+  transition: background-color var(--duration-slow) var(--ease),
+              color var(--duration-slow) var(--ease);
 }
+
 img, svg { display: block; }
-button, a { font-family: inherit; cursor: pointer; text-decoration: none; color: inherit; }
-button { border: none; background: none; padding: 0; }
-.visually-hidden {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+button, a {
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
+
+button { border: none; background: none; padding: 0; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================================
+   3. TYPOGRAPHY
+================================================ */
 h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
+
 .name {
   font-size: clamp(26px, 7vw, 32px);
-  font-weight: 700; line-height: 1.1;
-  color: var(--text-primary); letter-spacing: -0.025em; text-align: center;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  text-align: center;
 }
+
 .tagline {
-  font-size: 15px; font-weight: 400; color: var(--text-secondary);
-  text-align: center; line-height: 1.4; letter-spacing: -0.01em;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
+
 .card-label {
-  font-size: 12px; font-weight: 600; color: var(--text-tertiary);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
 }
+
+/* ================================================
+   4. LAYOUT & PAGE
+================================================ */
 .page {
-  max-width: 420px; margin: 0 auto;
+  max-width: 420px;
+  margin: 0 auto;
   padding: var(--space-2xl) var(--space-md) var(--space-xl);
-  display: flex; flex-direction: column; gap: var(--space-md);
-  opacity: 0; transform: translateY(16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  opacity: 0;
+  transform: translateY(16px);
   animation: pageEnter 0.55s var(--ease) 0.1s forwards;
 }
+
+/* ================================================
+   5. HERO
+================================================ */
 .hero {
-  display: flex; flex-direction: column; align-items: center;
-  gap: var(--space-sm); padding: var(--space-lg) 0 var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) 0 var(--space-sm);
 }
+
+/* ================================================
+   6. CARDS — SHARED
+================================================ */
 .card {
-  background: var(--surface); border-radius: var(--radius-xl);
-  border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
   padding: var(--space-lg);
-  transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
+  transition: box-shadow var(--duration) var(--ease),
+              transform var(--duration) var(--ease);
 }
+
 @media (hover: hover) {
-  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+  }
 }
-.connect-grid { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+/* ================================================
+   7. CONNECT SECTION
+================================================ */
+.connect-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
 .connect-btn {
-  display: flex; align-items: center; gap: var(--space-md);
-  padding: 14px var(--space-md); border-radius: var(--radius-lg);
-  background: var(--surface-2); border: 1px solid var(--border);
-  color: var(--text-primary); font-size: 15px; font-weight: 500;
-  letter-spacing: -0.01em; min-height: 54px;
-  position: relative; overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  min-height: 54px;
+  position: relative;
+  overflow: hidden;
   transition: background var(--duration) var(--ease),
               transform var(--duration) var(--ease-spring),
               box-shadow var(--duration) var(--ease);
 }
+
 .connect-btn::before {
-  content: ''; position: absolute; inset: 0; opacity: 0;
-  background: currentColor; border-radius: inherit;
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: currentColor;
+  border-radius: inherit;
   transition: opacity var(--duration) var(--ease);
 }
+
 @media (hover: hover) {
   .connect-btn:hover { transform: scale(1.015); box-shadow: var(--shadow-sm); }
   .connect-btn:hover::before { opacity: 0.04; }
   .connect-btn:hover .connect-icon { transform: scale(1.1); }
   .connect-btn:hover .connect-arrow { transform: translateX(2px); }
 }
+
 .connect-btn:active { transform: scale(0.975); transition-duration: 100ms; }
+
 .connect-icon {
-  width: 36px; height: 36px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   transition: transform var(--duration) var(--ease-spring);
 }
+
 .connect-icon svg { width: 20px; height: 20px; }
+
 .telegram-icon  { background: rgba(42,171,238,0.12); color: var(--telegram-color); }
 .whatsapp-icon  { background: rgba(37,211,102,0.12); color: var(--whatsapp-color); }
 .instagram-icon { background: rgba(225,48,108,0.12); color: var(--instagram-color); }
 .linkedin-icon  { background: rgba(10,102,194,0.12); color: var(--linkedin-color); }
+
 .connect-label { flex: 1; }
+
 .connect-arrow {
-  width: 16px; height: 16px; color: var(--text-tertiary); flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
   transition: transform var(--duration) var(--ease);
 }
 .connect-arrow svg { width: 100%; height: 100%; }
+
+/* ================================================
+   8. ADD CONTACT BUTTON
+================================================ */
 .add-contact-btn {
-  display: flex; align-items: center; justify-content: center;
-  gap: var(--space-sm); width: 100%; padding: 16px var(--space-lg);
-  border-radius: var(--radius-xl); background: var(--text-primary);
-  color: var(--surface); font-size: 16px; font-weight: 600;
-  letter-spacing: -0.015em; box-shadow: var(--shadow-md); min-height: 56px;
-  position: relative; overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: 16px var(--space-lg);
+  border-radius: var(--radius-xl);
+  background: var(--text-primary);
+  color: var(--surface);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  box-shadow: var(--shadow-md);
+  min-height: 56px;
+  position: relative;
+  overflow: hidden;
   transition: transform var(--duration) var(--ease-spring),
               box-shadow var(--duration) var(--ease),
               background var(--duration) var(--ease);
 }
+
 .add-contact-btn::after {
-  content: ''; position: absolute; inset: 0;
-  background: white; opacity: 0; transition: opacity var(--duration) var(--ease);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
 }
+
 @media (hover: hover) {
   .add-contact-btn:hover { transform: scale(1.01); box-shadow: var(--shadow-lg); }
   .add-contact-btn:hover::after { opacity: 0.06; }
 }
+
 .add-contact-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+
 .add-contact-icon { width: 22px; height: 22px; flex-shrink: 0; }
 .add-contact-icon svg { width: 100%; height: 100%; }
+
+/* ================================================
+   9. CRYPTO — EXPANDABLE
+================================================ */
 .crypto-section {
-  background: var(--surface); border-radius: var(--radius-xl);
-  border: 1px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
+
 .crypto-toggle {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: var(--space-md) var(--space-lg); min-height: 52px;
-  color: var(--text-secondary); font-size: 14px; font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  min-height: 52px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: -0.01em;
-  transition: color var(--duration) var(--ease), background var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease),
+              background var(--duration) var(--ease);
 }
+
 .crypto-toggle:hover { color: var(--text-primary); background: var(--surface-2); }
+
 .crypto-toggle-inner { display: flex; align-items: center; gap: var(--space-sm); }
+
 .crypto-toggle-icon { width: 20px; height: 20px; color: var(--text-tertiary); }
 .crypto-toggle-icon svg { width: 100%; height: 100%; }
+
 .crypto-toggle-chevron {
-  width: 18px; height: 18px; color: var(--text-tertiary);
+  width: 18px; height: 18px;
+  color: var(--text-tertiary);
   transition: transform var(--duration-slow) var(--ease);
 }
 .crypto-toggle-chevron svg { width: 100%; height: 100%; }
-.crypto-toggle[aria-expanded=\"true\"] .crypto-toggle-chevron { transform: rotate(180deg); }
-.crypto-panel { max-height: 0; overflow: hidden; transition: max-height var(--duration-slow) var(--ease); }
+.crypto-toggle[aria-expanded="true"] .crypto-toggle-chevron { transform: rotate(180deg); }
+
+.crypto-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-slow) var(--ease);
+}
 .crypto-panel.is-open { max-height: 200px; }
+
 .crypto-description {
-  font-size: 13px; color: var(--text-secondary);
-  padding: 0 var(--space-lg) var(--space-md); line-height: 1.5;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 0 var(--space-lg) var(--space-md);
+  line-height: 1.5;
 }
+
 .crypto-row {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: var(--space-sm) var(--space-lg) var(--space-lg);
-  background: var(--surface-2); margin: 0 var(--space-md) var(--space-md);
-  border-radius: var(--radius-md); border: 1px solid var(--border);
+  background: var(--surface-2);
+  margin: 0 var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
 }
+
 .crypto-info { display: flex; flex-direction: column; gap: 2px; }
+
 .crypto-platform {
-  font-size: 11px; font-weight: 600; color: var(--text-tertiary);
-  text-transform: uppercase; letter-spacing: 0.07em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
+
 .crypto-value {
-  font-size: 17px; font-weight: 600; color: var(--text-primary);
-  letter-spacing: -0.01em; font-variant-numeric: tabular-nums;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
+
 .copy-btn {
-  width: 40px; height: 40px; border-radius: var(--radius-sm);
-  background: var(--surface); border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm); display: flex; align-items: center;
-  justify-content: center; color: var(--text-secondary); flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  flex-shrink: 0;
   position: relative;
   transition: transform var(--duration) var(--ease-spring),
-              color var(--duration) var(--ease), background var(--duration) var(--ease);
+              color var(--duration) var(--ease),
+              background var(--duration) var(--ease);
 }
+
 .copy-btn:hover { color: var(--text-primary); transform: scale(1.05); }
 .copy-btn:active { transform: scale(0.92); transition-duration: 80ms; }
 .copy-btn svg { width: 18px; height: 18px; }
-.copy-btn-default, .copy-btn-success {
-  position: absolute; display: flex; align-items: center; justify-content: center;
-  transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease-spring);
+
+.copy-btn-default,
+.copy-btn-success {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--duration) var(--ease),
+              transform var(--duration) var(--ease-spring);
 }
+
 .copy-btn-success { color: #34C759; opacity: 0; transform: scale(0.6); }
 .copy-btn.copied .copy-btn-default { opacity: 0; transform: scale(0.6); }
 .copy-btn.copied .copy-btn-success { opacity: 1; transform: scale(1); }
+
+/* ================================================
+   10. TOAST
+================================================ */
 .toast {
   position: fixed;
   bottom: max(var(--space-xl), env(safe-area-inset-bottom) + 16px);
-  left: 50%; transform: translateX(-50%) translateY(80px);
-  background: var(--text-primary); color: var(--surface);
-  padding: 12px var(--space-lg); border-radius: var(--radius-full);
-  font-size: 14px; font-weight: 500; display: flex;
-  align-items: center; gap: var(--space-sm); box-shadow: var(--shadow-lg);
-  pointer-events: none; z-index: 1000; opacity: 0; white-space: nowrap;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--text-primary);
+  color: var(--surface);
+  padding: 12px var(--space-lg);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  white-space: nowrap;
   transition: transform var(--duration-slow) var(--ease-spring),
               opacity var(--duration-slow) var(--ease);
 }
+
 .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast-icon { color: #34C759; font-size: 15px; }
-@keyframes pageEnter { to { opacity: 1; transform: translateY(0); } }
-.hero              { animation: childEnter 0.5s var(--ease) 0.15s both; }
-.connect-card      { animation: childEnter 0.5s var(--ease) 0.25s both; }
-.add-contact-section { animation: childEnter 0.5s var(--ease) 0.32s both; }
-.crypto-section    { animation: childEnter 0.5s var(--ease) 0.38s both; }
-@keyframes childEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:             #111110;
-    --surface:        #1C1C1E;
-    --surface-2:      #2C2C2E;
-    --text-primary:   #F5F5F7;
-    --text-secondary: #98989D;
-    --text-tertiary:  #636366;
-    --border:         rgba(255,255,255,0.08);
-    --shadow-sm:      0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-md:      0 4px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
-    --shadow-lg:      0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.3);
-    --telegram-color: #3DB8F5;
-    --whatsapp-color: #34E070;
-    --instagram-color:#F0547A;
-    --linkedin-color: #3D8BD4;
-  }
-  .add-contact-btn {
-    background: var(--surface); color: var(--text-primary);
-    border: 1px solid var(--border);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .page, .hero, .connect-card, .add-contact-section, .crypto-section {
-    animation: none; opacity: 1; transform: none;
-  }
-}
-:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
-:focus:not(:focus-visible) { outline: none; }
-`;
-const b=new Blob([c],{type:'text/css'});
-const u=URL.createObjectURL(b);
-const a=document.createElement('a');
-a.href=u;a.download='styles.css';
-document.body.appendChild(a);a.click();
-document.body.removeChild(a);
-setTimeout(()=>URL.revokeObjectURL(u),1000);
-" style="padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;border-radius:8px;border:0.5px solid var(--border-strong);background:var(--surface-2);color:var(--text-primary)">⬇ Скачать styles.css</button>
-</div>
+
+/* ============================

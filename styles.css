@@ -1,46 +1,55 @@
 /* ================================================
    ALEXANDER DEMCHENKO — DIGITAL CONTACT CARD
-   styles.css
+   Apple iOS Settings aesthetic
 ================================================ */
 
+/* ================================================
+   1. TOKENS
+================================================ */
 :root {
-  --bg:             #F5F5F7;
-  --surface:        #FFFFFF;
-  --surface-2:      #F2F2F5;
-  --text-primary:   #111110;
-  --text-secondary: #6E6E73;
-  --text-tertiary:  #AEAEB2;
-  --border:         rgba(0,0,0,0.07);
-  --shadow-sm:      0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:      0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-  --shadow-lg:      0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.04);
-  --accent:         #E85D48;
-  --telegram-color: #2AABEE;
-  --whatsapp-color: #25D366;
-  --instagram-color:#E1306C;
-  --linkedin-color: #0A66C2;
+  /* Backgrounds — exact iOS values */
+  --bg:          #F2F2F7;
+  --surface:     #FFFFFF;
+  --surface-2:   #F2F2F7;
+
+  /* Text */
+  --text-primary:   #000000;
+  --text-secondary: #3C3C43;
+  --text-tertiary:  #3C3C4399;
+  --text-blue:      #007AFF;
+
+  /* Separator */
+  --separator: rgba(60,60,67,0.18);
+
+  /* Icon backgrounds */
+  --telegram-bg:  #2AABEE;
+  --whatsapp-bg:  #25D366;
+  --instagram-bg: #E1306C;
+  --linkedin-bg:  #0A66C2;
+  --add-bg:       #007AFF;
+  --crypto-bg:    #FF9500;
+
+  /* Typography */
   --font: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
-  --space-xs:  4px;
-  --space-sm:  8px;
-  --space-md:  16px;
-  --space-lg:  24px;
-  --space-xl:  32px;
-  --space-2xl: 48px;
-  --radius-sm:   10px;
-  --radius-md:   16px;
-  --radius-lg:   20px;
-  --radius-xl:   28px;
-  --radius-full: 9999px;
-  --ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration:      220ms;
-  --duration-slow: 400ms;
+
+  /* Spacing */
+  --page-h: 20px;
+  --radius-card: 12px;
+  --radius-icon: 8px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 200ms;
+  --dur-slow: 360ms;
 }
 
+/* ================================================
+   2. RESET
+================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -48,324 +57,253 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 body {
   font-family: var(--font);
-  background-color: var(--bg);
+  background: var(--bg);
   color: var(--text-primary);
   min-height: 100vh;
   min-height: 100dvh;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right)
-           env(safe-area-inset-bottom) env(safe-area-inset-left);
-  transition: background-color var(--duration-slow) var(--ease),
-              color var(--duration-slow) var(--ease);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 img, svg { display: block; }
-
-button, a {
-  font-family: inherit;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-}
-
-button { border: none; background: none; padding: 0; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; padding: 0; font-family: inherit; cursor: pointer; }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
-h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
-
-.name {
-  font-size: clamp(26px, 7vw, 32px);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text-primary);
-  letter-spacing: -0.025em;
-  text-align: center;
-}
-
-.tagline {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text-secondary);
-  text-align: center;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.card-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: var(--space-sm);
-}
-
+/* ================================================
+   3. PAGE LAYOUT
+================================================ */
 .page {
-  max-width: 420px;
+  max-width: 390px;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+  padding: 0 var(--page-h) env(safe-area-inset-bottom);
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 0;
+  /* Entrance animation */
   opacity: 0;
-  transform: translateY(16px);
-  animation: pageEnter 0.55s var(--ease) 0.1s forwards;
+  animation: pageEnter 0.5s var(--ease) 0.05s forwards;
 }
 
+/* ================================================
+   4. HERO
+================================================ */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-lg) 0 var(--space-sm);
+  padding: 48px 0 32px;
+  gap: 12px;
 }
 
-.card {
-  background: var(--surface);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-lg);
-  transition: box-shadow var(--duration) var(--ease),
-              transform var(--duration) var(--ease);
-}
-
-@media (hover: hover) {
-  .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-1px);
-  }
-}
-
-.connect-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.connect-btn {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: 14px var(--space-md);
-  border-radius: var(--radius-lg);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  min-height: 54px;
-  position: relative;
-  overflow: hidden;
-  transition: background var(--duration) var(--ease),
-              transform var(--duration) var(--ease-spring),
-              box-shadow var(--duration) var(--ease);
-}
-
-.connect-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background: currentColor;
-  border-radius: inherit;
-  transition: opacity var(--duration) var(--ease);
-}
-
-@media (hover: hover) {
-  .connect-btn:hover { transform: scale(1.015); box-shadow: var(--shadow-sm); }
-  .connect-btn:hover::before { opacity: 0.04; }
-  .connect-btn:hover .connect-icon { transform: scale(1.1); }
-  .connect-btn:hover .connect-arrow { transform: translateX(2px); }
-}
-
-.connect-btn:active { transform: scale(0.975); transition-duration: 100ms; }
-
-.connect-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
+/* Avatar circle with initials */
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #C7C7CC, #AEAEB2);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  transition: transform var(--duration) var(--ease-spring);
-}
-
-.connect-icon svg { width: 20px; height: 20px; }
-
-.telegram-icon  { background: rgba(42,171,238,0.12); color: var(--telegram-color); }
-.whatsapp-icon  { background: rgba(37,211,102,0.12); color: var(--whatsapp-color); }
-.instagram-icon { background: rgba(225,48,108,0.12); color: var(--instagram-color); }
-.linkedin-icon  { background: rgba(10,102,194,0.12); color: var(--linkedin-color); }
-
-.connect-label { flex: 1; }
-
-.connect-arrow {
-  width: 16px;
-  height: 16px;
-  color: var(--text-tertiary);
-  flex-shrink: 0;
-  transition: transform var(--duration) var(--ease);
-}
-.connect-arrow svg { width: 100%; height: 100%; }
-
-.add-contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  width: 100%;
-  padding: 16px var(--space-lg);
-  border-radius: var(--radius-xl);
-  background: var(--text-primary);
-  color: var(--surface);
-  font-size: 16px;
+  font-size: 30px;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  box-shadow: var(--shadow-md);
-  min-height: 56px;
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration) var(--ease-spring),
-              box-shadow var(--duration) var(--ease),
-              background var(--duration) var(--ease);
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  /* Subtle shadow like iOS contact photos */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  margin-bottom: 4px;
 }
 
-.add-contact-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: white;
-  opacity: 0;
-  transition: opacity var(--duration) var(--ease);
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.1;
 }
 
-@media (hover: hover) {
-  .add-contact-btn:hover { transform: scale(1.01); box-shadow: var(--shadow-lg); }
-  .add-contact-btn:hover::after { opacity: 0.06; }
+.tagline {
+  font-size: 15px;
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: -0.1px;
 }
 
-.add-contact-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+/* ================================================
+   5. SECTION GROUP — iOS grouped table
+================================================ */
+.section-group {
+  margin-top: 28px;
+}
 
-.add-contact-icon { width: 22px; height: 22px; flex-shrink: 0; }
-.add-contact-icon svg { width: 100%; height: 100%; }
+/* Section label above card (e.g. "CONNECT") */
+.section-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
 
-.crypto-section {
+/* Section footer below card */
+.section-footer {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  padding: 8px 16px 0;
+  line-height: 1.4;
+}
+
+/* White rounded card — iOS grouped list container */
+.list-card {
   background: var(--surface);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-card);
   overflow: hidden;
 }
 
-.crypto-toggle {
+/* ================================================
+   6. LIST ROW — individual row inside card
+================================================ */
+.list-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: var(--space-md) var(--space-lg);
+  gap: 12px;
+  padding: 11px 16px 11px 12px;
   min-height: 52px;
-  color: var(--text-secondary);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: color var(--duration) var(--ease),
-              background var(--duration) var(--ease);
+  width: 100%;
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  background: transparent;
+  position: relative;
+  transition: background var(--dur) var(--ease);
+  text-decoration: none;
 }
 
-.crypto-toggle:hover { color: var(--text-primary); background: var(--surface-2); }
+/* Press state — iOS highlight */
+.list-row:active {
+  background: rgba(0,0,0,0.06);
+  transition-duration: 50ms;
+}
 
-.crypto-toggle-inner { display: flex; align-items: center; gap: var(--space-sm); }
+/* Separator line — inset like iOS */
+.list-separator {
+  height: 0.5px;
+  background: var(--separator);
+  margin-left: 56px; /* aligns after icon */
+}
 
-.crypto-toggle-icon { width: 20px; height: 20px; color: var(--text-tertiary); }
-.crypto-toggle-icon svg { width: 100%; height: 100%; }
+/* ================================================
+   7. ROW ICON — square with rounded corners
+================================================ */
+.row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFFFFF;
+  transition: transform var(--dur) var(--spring);
+}
 
-.crypto-toggle-chevron {
-  width: 18px; height: 18px;
+.row-icon svg { width: 18px; height: 18px; }
+
+.list-row:active .row-icon { transform: scale(0.92); }
+
+/* Per-platform colors */
+.telegram-icon  { background: var(--telegram-bg); }
+.whatsapp-icon  { background: var(--whatsapp-bg); }
+.instagram-icon { background: var(--instagram-bg); }
+.linkedin-icon  { background: var(--linkedin-bg); }
+.add-icon       { background: var(--add-bg); }
+.crypto-icon    { background: var(--crypto-bg); }
+
+.row-label { flex: 1; text-align: left; }
+
+/* Blue tint for action row */
+.action-label { color: var(--text-blue); font-weight: 500; }
+
+/* Chevron */
+.row-chevron {
+  width: 14px;
+  height: 14px;
   color: var(--text-tertiary);
-  transition: transform var(--duration-slow) var(--ease);
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform var(--dur) var(--ease);
 }
-.crypto-toggle-chevron svg { width: 100%; height: 100%; }
-.crypto-toggle[aria-expanded="true"] .crypto-toggle-chevron { transform: rotate(180deg); }
+.row-chevron svg { width: 100%; height: 100%; }
 
+/* ================================================
+   8. CRYPTO PANEL
+================================================ */
 .crypto-panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--duration-slow) var(--ease);
+  transition: max-height var(--dur-slow) var(--ease);
 }
-.crypto-panel.is-open { max-height: 200px; }
+.crypto-panel.is-open { max-height: 120px; }
 
-.crypto-description {
-  font-size: 13px;
-  color: var(--text-secondary);
-  padding: 0 var(--space-lg) var(--space-md);
-  line-height: 1.5;
+/* Chevron rotates when open */
+#cryptoToggle[aria-expanded="true"] .crypto-chevron {
+  transform: rotate(90deg);
 }
 
-.crypto-row {
+.crypto-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-sm) var(--space-lg) var(--space-lg);
-  background: var(--surface-2);
-  margin: 0 var(--space-md) var(--space-md);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
+  padding: 14px 16px 14px 56px;
 }
 
 .crypto-info { display: flex; flex-direction: column; gap: 2px; }
 
 .crypto-platform {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
 }
 
 .crypto-value {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.3px;
   font-variant-numeric: tabular-nums;
 }
 
+/* Copy button */
 .copy-btn {
-  width: 40px; height: 40px;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
-  flex-shrink: 0;
+  color: var(--text-blue);
   position: relative;
-  transition: transform var(--duration) var(--ease-spring),
-              color var(--duration) var(--ease),
-              background var(--duration) var(--ease);
+  transition: transform var(--dur) var(--spring),
+              background var(--dur) var(--ease);
 }
-
-.copy-btn:hover { color: var(--text-primary); transform: scale(1.05); }
-.copy-btn:active { transform: scale(0.92); transition-duration: 80ms; }
+.copy-btn:active { transform: scale(0.88); background: rgba(0,0,0,0.06); }
 .copy-btn svg { width: 18px; height: 18px; }
 
 .copy-btn-default,
@@ -374,94 +312,97 @@ h1, h2 { font-family: var(--font); letter-spacing: -0.02em; }
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity var(--duration) var(--ease),
-              transform var(--duration) var(--ease-spring);
+  transition: opacity var(--dur) var(--ease),
+              transform var(--dur) var(--spring);
 }
-
-.copy-btn-success { color: #34C759; opacity: 0; transform: scale(0.6); }
-.copy-btn.copied .copy-btn-default { opacity: 0; transform: scale(0.6); }
+.copy-btn-success { color: #34C759; opacity: 0; transform: scale(0.5); }
+.copy-btn.copied .copy-btn-default { opacity: 0; transform: scale(0.5); }
 .copy-btn.copied .copy-btn-success { opacity: 1; transform: scale(1); }
 
+/* ================================================
+   9. TOAST
+================================================ */
 .toast {
   position: fixed;
-  bottom: max(var(--space-xl), env(safe-area-inset-bottom) + 16px);
+  bottom: max(32px, env(safe-area-inset-bottom) + 16px);
   left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  background: var(--text-primary);
-  color: var(--surface);
-  padding: 12px var(--space-lg);
-  border-radius: var(--radius-full);
+  transform: translateX(-50%) translateY(72px);
+  background: rgba(50,50,50,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  box-shadow: var(--shadow-lg);
+  gap: 6px;
   pointer-events: none;
   z-index: 1000;
   opacity: 0;
   white-space: nowrap;
-  transition: transform var(--duration-slow) var(--ease-spring),
-              opacity var(--duration-slow) var(--ease);
+  transition: transform var(--dur-slow) var(--spring),
+              opacity var(--dur-slow) var(--ease);
 }
-
 .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-.toast-icon { color: #34C759; font-size: 15px; }
+.toast-icon { color: #34C759; }
 
+/* ================================================
+   10. ANIMATIONS
+================================================ */
 @keyframes pageEnter {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; }
 }
 
-.hero                { animation: childEnter 0.5s var(--ease) 0.15s both; }
-.connect-card        { animation: childEnter 0.5s var(--ease) 0.25s both; }
-.add-contact-section { animation: childEnter 0.5s var(--ease) 0.32s both; }
-.crypto-section      { animation: childEnter 0.5s var(--ease) 0.38s both; }
+.hero           { animation: fadeUp 0.5s var(--ease) 0.1s both; }
+.section-group  { animation: fadeUp 0.5s var(--ease) 0.18s both; }
+.section-group:nth-child(3) { animation-delay: 0.24s; }
+.section-group:nth-child(4) { animation-delay: 0.30s; }
 
-@keyframes childEnter {
-  from { opacity: 0; transform: translateY(12px); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ================================================
+   11. DARK MODE
+================================================ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:             #111110;
+    --bg:             #000000;
     --surface:        #1C1C1E;
-    --surface-2:      #2C2C2E;
-    --text-primary:   #F5F5F7;
-    --text-secondary: #98989D;
-    --text-tertiary:  #636366;
-    --border:         rgba(255,255,255,0.08);
-    --shadow-sm:      0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-md:      0 4px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
-    --shadow-lg:      0 8px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.3);
-    --telegram-color: #3DB8F5;
-    --whatsapp-color: #34E070;
-    --instagram-color:#F0547A;
-    --linkedin-color: #3D8BD4;
+    --text-primary:   #FFFFFF;
+    --text-secondary: #EBEBF5;
+    --text-tertiary:  #EBEBF599;
+    --text-blue:      #0A84FF;
+    --separator:      rgba(84,84,88,0.6);
   }
 
-  .add-contact-btn {
-    background: var(--surface);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
+  .avatar {
+    background: linear-gradient(145deg, #48484A, #636366);
   }
+
+  .copy-btn { background: #2C2C2E; }
 }
 
+/* ================================================
+   12. REDUCED MOTION
+================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .page, .hero, .connect-card,
-  .add-contact-section, .crypto-section {
-    animation: none; opacity: 1; transform: none;
-  }
+  .page, .hero, .section-group { animation: none; opacity: 1; transform: none; }
 }
 
+/* ================================================
+   13. FOCUS
+================================================ */
 :focus-visible {
-  outline: 2.5px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+  outline: 2px solid #007AFF;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 :focus:not(:focus-visible) { outline: none; }

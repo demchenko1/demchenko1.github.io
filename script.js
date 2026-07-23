@@ -132,3 +132,44 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+// XP clock
+function updateClock() {
+  const el = document.getElementById('xp-clock');
+  if (!el) return;
+  const now = new Date();
+  el.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+}
+updateClock();
+setInterval(updateClock, 10000);
+
+// About toggle
+const aboutToggle = document.getElementById('aboutToggle');
+const aboutPanel = document.getElementById('aboutPanel');
+if (aboutToggle && aboutPanel) {
+  aboutToggle.addEventListener('click', () => {
+    const open = aboutPanel.style.display !== 'none';
+    aboutPanel.style.display = open ? 'none' : 'block';
+    aboutToggle.textContent = open ? '▼' : '▲';
+  });
+}
+
+// Fix copy button for XP style
+const copyUID = document.getElementById('copyUID');
+if (copyUID) {
+  copyUID.addEventListener('click', async () => {
+    const text = copyUID.getAttribute('data-copy');
+    const def = copyUID.querySelector('.copy-btn-default');
+    const suc = copyUID.querySelector('.copy-btn-success');
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const t = document.createElement('textarea');
+      t.value = text; t.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(t); t.select();
+      document.execCommand('copy'); document.body.removeChild(t);
+    }
+    def.style.display = 'none'; suc.style.display = 'inline';
+    showToast('Copied to clipboard');
+    setTimeout(() => { def.style.display = 'inline'; suc.style.display = 'none'; }, 2000);
+  });
+}

@@ -204,9 +204,16 @@ body {
 .xp-row-icon {
   width: 36px;
   height: 36px;
-  object-fit: contain;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  border-radius: 4px;
+}
+
+.xp-row-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .xp-row-text {

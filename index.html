@@ -8,26 +8,38 @@
 </head>
 <body>
 
-  <!-- Taskbar top -->
   <div class="xp-titlebar">
     <div class="xp-titlebar-left">
-      <img class="xp-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Windows_Logo_1995.svg/200px-Windows_Logo_1995.svg.png" alt="Windows" />
+      <svg class="xp-logo" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="40" height="40" fill="#F25022"/>
+        <rect x="46" y="0" width="40" height="40" fill="#7FBA00"/>
+        <rect x="0" y="46" width="40" height="40" fill="#00A4EF"/>
+        <rect x="46" y="46" width="40" height="40" fill="#FFB900"/>
+      </svg>
       <span>Alexander Demchenko - Contact Card</span>
     </div>
     <div class="xp-titlebar-buttons">
-      <button class="xp-btn-min" title="Minimize">_</button>
-      <button class="xp-btn-max" title="Maximize">□</button>
-      <button class="xp-btn-close" title="Close">✕</button>
+      <button class="xp-btn-min">_</button>
+      <button class="xp-btn-max">□</button>
+      <button class="xp-btn-close">✕</button>
     </div>
   </div>
 
-  <!-- Main window -->
   <div class="xp-window">
 
     <!-- Header -->
     <div class="xp-header">
       <div class="xp-header-left">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Windows_XP-Logo.svg/320px-Windows_XP-Logo.svg.png" alt="Windows XP" class="xp-winlogo" />
+        <!-- Windows XP logo SVG -->
+        <svg class="xp-winlogo" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="36" height="36" rx="3" fill="#F25022"/>
+          <rect x="40" y="0" width="36" height="36" rx="3" fill="#7FBA00"/>
+          <rect x="0" y="40" width="36" height="36" rx="3" fill="#00A4EF"/>
+          <rect x="40" y="40" width="36" height="36" rx="3" fill="#FFB900"/>
+          <text x="84" y="44" font-family="Tahoma,Arial,sans-serif" font-size="28" font-weight="bold" fill="#1248C8">Windows</text>
+          <text x="84" y="62" font-family="Tahoma,Arial,sans-serif" font-size="16" fill="#666">xp</text>
+          <text x="104" y="62" font-family="Tahoma,Arial,sans-serif" font-size="11" fill="#E05C1A" font-weight="bold">™</text>
+        </svg>
       </div>
       <div class="xp-header-right">
         <div class="xp-name">Alexander Demchenko</div>
@@ -39,12 +51,16 @@
       </div>
     </div>
 
-    <!-- CONNECT section -->
-    <div class="xp-section-header">Connect</div>
+    <!-- CONNECT -->
+    <div class="xp-section-header">
+      <span>Connect</span>
+    </div>
     <div class="xp-list">
 
       <a href="https://t.me/demchenko00" class="xp-row" rel="noopener noreferrer" target="_blank">
-        <img class="xp-row-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/64px-Telegram_logo.svg.png" alt="Telegram" />
+        <span class="xp-row-icon" style="background:#2AABEE;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.617l-1.68 7.923c-.125.561-.453.699-.917.435l-2.54-1.872-1.225 1.18c-.136.135-.25.25-.511.25l.181-2.583 4.694-4.239c.204-.181-.044-.281-.317-.1L7.77 14.66l-2.5-.779c-.543-.17-.554-.543.114-.803l9.73-3.751c.452-.165.849.11.816.49z" fill="#fff"/></svg>
+        </span>
         <div class="xp-row-text">
           <div class="xp-row-title">Telegram</div>
           <div class="xp-row-url">t.me/demchenko00</div>
@@ -53,7 +69,9 @@
       </a>
 
       <a href="https://wa.me/79678689529" class="xp-row" rel="noopener noreferrer" target="_blank">
-        <img class="xp-row-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/64px-WhatsApp.svg.png" alt="WhatsApp" />
+        <span class="xp-row-icon" style="background:#25D366;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12.001 2C6.478 2 2.002 6.476 2.002 12c0 1.74.45 3.37 1.236 4.795L2 22l5.354-1.218A9.964 9.964 0 0012.001 22C17.524 22 22 17.524 22 12S17.524 2 12.001 2zm5.26 14.234c-.22.618-1.285 1.18-1.76 1.254-.45.07-.99.1-1.597-.1-.368-.12-.84-.28-1.44-.547-2.53-1.093-4.185-3.634-4.31-3.803-.126-.169-1.02-1.355-1.02-2.583 0-1.228.643-1.832.87-2.083.228-.25.497-.312.663-.312.165 0 .33.002.474.008.152.007.356-.057.557.425.207.498.706 1.72.768 1.845.063.126.104.272.02.44-.082.168-.124.273-.246.42-.124.148-.26.33-.372.443-.124.124-.253.26-.108.51.145.25.643 1.06 1.38 1.716.947.842 1.746 1.102 1.997 1.226.25.124.394.104.54-.063.145-.167.622-.727.788-.976.166-.25.332-.207.56-.124.228.082 1.45.684 1.7.808.25.124.415.186.477.29.062.104.062.602-.158 1.22z" fill="#fff"/></svg>
+        </span>
         <div class="xp-row-text">
           <div class="xp-row-title">WhatsApp</div>
           <div class="xp-row-url">wa.me/79678689529</div>
@@ -62,7 +80,9 @@
       </a>
 
       <a href="https://www.instagram.com/demchenko_574?igsh=MWp6aml3dGhtbmExZw%3D%3D&utm_source=qr" class="xp-row" rel="noopener noreferrer" target="_blank">
-        <img class="xp-row-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/64px-Instagram_logo_2016.svg.png" alt="Instagram" />
+        <span class="xp-row-icon" style="background:radial-gradient(circle at 30% 110%, #ffdb8b, #ee653d 25%, #d42e81 50%, #a237b6 65%, #4051db);">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#fff" stroke-width="1.75"/><circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="1.75"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+        </span>
         <div class="xp-row-text">
           <div class="xp-row-title">Instagram</div>
           <div class="xp-row-url">instagram.com/demchenko_574</div>
@@ -71,7 +91,9 @@
       </a>
 
       <a href="https://www.linkedin.com/in/%D0%B0%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D0%B4%D0%B5%D0%BC%D1%87%D0%B5%D0%BD%D0%BA%D0%BE-292b65329?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="xp-row" rel="noopener noreferrer" target="_blank">
-        <img class="xp-row-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/64px-LinkedIn_logo_initials.png" alt="LinkedIn" />
+        <span class="xp-row-icon" style="background:#0A66C2;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" fill="#fff"/><circle cx="4" cy="4" r="2" fill="#fff"/></svg>
+        </span>
         <div class="xp-row-text">
           <div class="xp-row-title">LinkedIn</div>
           <div class="xp-row-url">linkedin.com/in/александр-демченко-292b65329</div>
@@ -84,7 +106,9 @@
     <!-- ADD CONTACT -->
     <div class="xp-list xp-list-single">
       <button class="xp-row xp-row-btn" id="addContactBtn" type="button">
-        <img class="xp-row-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Human-address-book.svg/64px-Human-address-book.svg.png" alt="Contact" />
+        <span class="xp-row-icon" style="background:#007AFF;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5c-1.656 0-3 1.343-3 3s1.344 3 3 3zm-8 0c1.657 0 3-1.343 3-3S9.657 5 8 5C6.344 5 5 6.343 5 8s1.344 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#fff"/></svg>
+        </span>
         <div class="xp-row-text">
           <div class="xp-row-title">Add Contact</div>
           <div class="xp-row-url">Save my contact to your contacts.</div>
@@ -94,16 +118,14 @@
     </div>
 
     <!-- CRYPTO -->
-    <div class="xp-section-header xp-section-crypto">
+    <div class="xp-section-header">
       <span>Crypto</span>
-      <button class="xp-collapse-btn" id="cryptoToggle" aria-expanded="false" aria-controls="cryptoPanel" type="button">▲</button>
+      <button class="xp-collapse-btn" id="cryptoToggle" aria-expanded="true" aria-controls="cryptoPanel" type="button">▲</button>
     </div>
     <div class="xp-crypto-panel" id="cryptoPanel">
       <div class="xp-crypto-inner">
-        <div class="xp-crypto-icon">🪙</div>
-        <div class="xp-crypto-text">
-          <strong>Support me or send crypto if needed.</strong>
-        </div>
+        <span style="font-size:28px;flex-shrink:0;">🪙</span>
+        <div class="xp-crypto-text">Support me or send crypto if needed.</div>
       </div>
       <div class="xp-crypto-uid">
         <div>
@@ -118,7 +140,7 @@
     </div>
 
     <!-- ABOUT -->
-    <div class="xp-section-header xp-section-about">
+    <div class="xp-section-header">
       <span>About</span>
       <button class="xp-collapse-btn" id="aboutToggle" type="button">▼</button>
     </div>
@@ -129,29 +151,43 @@
           <div>🏆 Interests: Travel, Crypto, Technology</div>
           <div>✉️ Open for collaboration and new ideas!</div>
         </div>
-        <img class="xp-bliss" src="https://upload.wikimedia.org/wikipedia/en/2/2f/Windowsxp.png" alt="Bliss wallpaper" />
+        <!-- Bliss wallpaper as SVG gradient — no external image needed -->
+        <svg class="xp-bliss" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1E90FF"/>
+              <stop offset="100%" stop-color="#87CEEB"/>
+            </linearGradient>
+            <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7DC832"/>
+              <stop offset="100%" stop-color="#4A8A10"/>
+            </linearGradient>
+          </defs>
+          <rect width="120" height="80" fill="url(#sky)"/>
+          <ellipse cx="60" cy="85" rx="80" ry="35" fill="url(#hill)"/>
+          <ellipse cx="20" cy="22" rx="14" ry="8" fill="white" opacity="0.85"/>
+          <ellipse cx="32" cy="19" rx="12" ry="7" fill="white" opacity="0.85"/>
+          <ellipse cx="90" cy="16" rx="16" ry="9" fill="white" opacity="0.8"/>
+          <ellipse cx="102" cy="14" rx="11" ry="6" fill="white" opacity="0.8"/>
+        </svg>
       </div>
     </div>
 
-    <!-- Footer -->
     <div class="xp-footer">
       <span class="xp-footer-thanks">Thanks for visiting! 🙂</span>
     </div>
 
   </div>
 
-  <!-- XP Taskbar bottom -->
+  <!-- Taskbar -->
   <div class="xp-taskbar">
     <button class="xp-start-btn">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Windows_Logo_1995.svg/32px-Windows_Logo_1995.svg.png" alt="" />
+      <svg width="20" height="20" viewBox="0 0 88 88"><rect x="0" y="0" width="40" height="40" fill="#F25022"/><rect x="46" y="0" width="40" height="40" fill="#7FBA00"/><rect x="0" y="46" width="40" height="40" fill="#00A4EF"/><rect x="46" y="46" width="40" height="40" fill="#FFB900"/></svg>
       <span>start</span>
     </button>
     <div class="xp-taskbar-right">
       <span>EN</span>
-      <span>🌐</span>
-      <span>📷</span>
-      <span>👥</span>
-      <span>🔊</span>
+      <span>🌐 📷 👥 🔊</span>
       <span id="xp-clock"></span>
     </div>
   </div>
